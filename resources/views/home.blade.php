@@ -14,10 +14,7 @@
                         </div>
                     @endif
 
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
-                            <button class="btn btn-primary">Logout</button>
-                        </form>
+                        <button class="btn btn-primary" form="logoutForm">Logout</button>
 
                     {{ __('You are logged in!') }}
                 </div>

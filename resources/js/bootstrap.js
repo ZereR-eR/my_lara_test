@@ -1,7 +1,8 @@
 window._ = require('lodash');
 
 try {
-    require('bootstrap');
+    window.require('bootstrap');
+    window.Swal = require('sweetalert2/dist/sweetalert2.min');
 } catch (e) {}
 
 /**

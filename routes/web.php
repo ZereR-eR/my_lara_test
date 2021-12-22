@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\ProfileController;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
@@ -20,3 +22,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware("auth")->group(function(){
+    Route::view("test","test")->name("test");
+
+    Route::prefix("profile")->name('profile.')->group(function (){
+        Route::view('/',"profile.index")->name('index');
+        Route::get("change-password",[ProfileController::class,'changePassword'])->name('change-password');
+        Route::post("change-password",[ProfileController::class,'updatePassword'])->name('change-password');
+        Route::post("change-photo",[ProfileController::class,'updatePhoto'])->name('change-photo');
+    });
+});
